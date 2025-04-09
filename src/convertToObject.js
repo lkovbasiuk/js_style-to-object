@@ -6,19 +6,19 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const newObj = {};
-
   const newArr = sourceString.split(';');
 
   const newNewArr = newArr.map((el) => el.split(':'));
 
   const trimmedArr = newNewArr.map((pair) => pair.map((el) => el.trim()));
 
-  trimmedArr.forEach((pair) => {
+  const newObj = trimmedArr.reduce((acc, pair) => {
     if (pair.length === 2 && pair[0]) {
-      newObj[pair[0]] = pair[1];
+      acc[pair[0]] = pair[1];
     }
-  });
+
+    return acc;
+  }, {});
 
   return newObj;
 }
