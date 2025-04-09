@@ -14,13 +14,11 @@ function convertToObject(sourceString) {
 
   const trimmedArr = newNewArr.map((pair) => pair.map((el) => el.trim()));
 
-  for (let i = 0; i < trimmedArr.length; i++) {
-    const pair = trimmedArr[i];
-
+  trimmedArr.forEach((pair) => {
     if (pair.length === 2 && pair[0]) {
       newObj[pair[0]] = pair[1];
     }
-  }
+  });
 
   return newObj;
 }
